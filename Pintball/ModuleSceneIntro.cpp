@@ -32,6 +32,7 @@ bool ModuleSceneIntro::Start()
 
 	Ball = App->physics->CreateCircle(positionPX, positionPY, 14);
 	Ball->listener = this;
+	Ball->body->SetBullet(true);
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
