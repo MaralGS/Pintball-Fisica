@@ -103,15 +103,13 @@ update_status ModuleSceneIntro::Update()
 	
 	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
 	{
-		b2Vec2 F = b2Vec2(0, -700);
+		b2Vec2 F = b2Vec2(0, -1000);
 		App->physics->RecE->body->ApplyForceToCenter(F, 1);
-		//App->physics->StickE.lowerAngle = 30 * DEGTORAD;
 	}	
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
 	{
-		b2Vec2 F = b2Vec2(0, -700);
+		b2Vec2 F = b2Vec2(0, -1000);
 		App->physics->RecD->body->ApplyForceToCenter(F, 1);
-		//App->physics->StickD.lowerAngle = 30 * DEGTORAD;
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
