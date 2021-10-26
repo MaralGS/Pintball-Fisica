@@ -43,10 +43,12 @@ public:
 	SDL_Texture* circle;
 	SDL_Texture* box;
 	SDL_Texture* rick;
+	SDL_Texture* EndScreen;
 	SDL_Texture* map;
 	SDL_Texture* ball;
 	SDL_Texture* Fonts;
 	bool FTitle = true;
+	bool Finish_End = false;
 
 	//Fonts
 	uint score = 000;

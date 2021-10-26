@@ -33,8 +33,8 @@ bool ModuleSceneIntro::Start()
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
-	//ball = App->textures->Load("Pinball/Poro_Coin.png");
-	ball = App->textures->Load("Pinball/ball.png");
+	EndScreen = App->textures->Load("pinball/End_Screen.png");
+	ball = App->textures->Load("Pinball/Poro_Coin.png");
 	map = App->textures->Load("pinball/Pinball_Map.png");
 	
 
@@ -116,6 +116,21 @@ update_status ModuleSceneIntro::Update()
 	{
 		b2Vec2 F = b2Vec2(0, -500);
 		App->physics->Barup->body->ApplyForceToCenter(F, 0);
+	}
+
+	if(App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	{
+		if (Finish_End = true)
+		{
+		vidas = 3;
+		score = 0;
+		balls.clear();
+		balls.add(App->physics->CreateCircle(500, 930, 14));
+		
+		Finish_End = false;
+		}
+		
+		
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
@@ -239,7 +254,8 @@ update_status ModuleSceneIntro::Update()
 
 	if (vidas <= 0)
 	{
-		App->renderer->Blit(rick, 100, 100, NULL);
+		App->renderer->Blit(EndScreen, 0, 0, NULL);
+		Finish_End = true;
 	}
 	
 	/*if (score = score + 100)

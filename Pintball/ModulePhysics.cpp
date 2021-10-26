@@ -863,6 +863,12 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 		PAudio = true;
 	}
 
+	if (physA == App->scene_intro->Rebot)
+	{
+		App->scene_intro->balls; 
+		
+	}
+
 	if (physA == App->scene_intro->Loose)
 	{
 		if (App->scene_intro->vidas > 1)
