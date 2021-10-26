@@ -49,7 +49,7 @@ bool ModuleSceneIntro::Start()
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150,0);
 	Rebot = App->physics->CreateRectangleSensor(127, 727, 165, 10, 20);
-	//Rebot2 = App->physics->CreateRectangleSensor(218, 1030, 80, 150);
+	Rebot2 = App->physics->CreateRectangleSensor(315, 727, 165, 10, -20);
 	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
@@ -105,13 +105,13 @@ update_status ModuleSceneIntro::Update()
 	{
 		b2Vec2 F = b2Vec2(0, -700);
 		App->physics->RecE->body->ApplyForceToCenter(F, 1);
-		App->physics->StickE.lowerAngle = 30 * DEGTORAD;
+		//App->physics->StickE.lowerAngle = 30 * DEGTORAD;
 	}	
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
 	{
 		b2Vec2 F = b2Vec2(0, -700);
 		App->physics->RecD->body->ApplyForceToCenter(F, 1);
-		App->physics->StickD.lowerAngle = 30 * DEGTORAD;
+		//App->physics->StickD.lowerAngle = 30 * DEGTORAD;
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)

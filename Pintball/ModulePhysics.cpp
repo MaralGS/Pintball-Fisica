@@ -486,7 +486,7 @@ bool ModulePhysics::Start()
 		StickD.bodyA = RecD->body;
 		StickD.bodyB = CerD->body;
 
-		StickD.referenceAngle = 0 * DEGTORAD;
+		StickD.referenceAngle = 20 * DEGTORAD;
 		StickD.enableLimit = true;
 
 		StickD.lowerAngle = -30 * DEGTORAD;
@@ -506,7 +506,7 @@ bool ModulePhysics::Start()
 		StickE.bodyA = RecE->body;
 		StickE.bodyB = CerE->body;
 
-		StickE.referenceAngle = 0 * DEGTORAD;
+		StickE.referenceAngle = -20 * DEGTORAD;
 		StickE.enableLimit = true;
 
 		StickE.lowerAngle = -30 * DEGTORAD;
