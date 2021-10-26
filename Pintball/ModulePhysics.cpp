@@ -862,7 +862,7 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 
 	if (physA == App->scene_intro->Rebot || physA == App->scene_intro->Rebot2)
 	{
-		App->scene_intro->balls; 
+		//App->scene_intro->balls; 
 		App->scene_intro->Ball->body->ApplyForceToCenter(b2Vec2(0, -200), true);
 	}
 

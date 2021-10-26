@@ -92,8 +92,8 @@ update_status ModuleSceneIntro::Update()
 
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
-		balls.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 14));
-		balls.getLast()->data->listener = this;
+		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 14));
+		circles.getLast()->data->listener = this;
 	}
 	
 	
@@ -188,7 +188,7 @@ update_status ModuleSceneIntro::Update()
 
 	// All draw functions ------------------------------------------------------
 	p2List_item<PhysBody*>* c = circles.getFirst();
-
+	
 	while(c != NULL)
 	{
 		int x, y;
@@ -224,21 +224,18 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
-	c = balls.getFirst();
 
-	while (c != NULL)
-	{
+	
 		int x, y;
-		c->data->GetPosition(x, y);
-		App->renderer->Blit(ball, x, y, NULL, 1.0f, c->data->GetRotation());
+		Ball->GetPosition(x,y);
+		App->renderer->Blit(ball, x, y, NULL, 1.0f,Ball->GetRotation());
 		if (ray_on)
 		{
 			int hit = c->data->RayCast(ray.x, ray.y, mouse.x, mouse.y, normal.x, normal.y);
 			if (hit >= 0)
 				ray_hit = hit;
 		}
-		c = c->next;
-	}
+	
 
 	
 
