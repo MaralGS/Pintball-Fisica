@@ -48,6 +48,8 @@ bool ModuleSceneIntro::Start()
 	//sensor
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150);
+	//Rebot = App->physics->CreateRectangleSensor(100,100, 100, 10);
+	//Rebot2 = App->physics->CreateRectangleSensor(218, 1030, 80, 150);
 	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);

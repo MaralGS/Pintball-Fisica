@@ -29,6 +29,8 @@ public:
 
 	PhysBody* sensor;
 	PhysBody* Loose;
+	PhysBody* Rebot;
+	PhysBody* Rebot2;
 	PhysBody* circle1;
 	PhysBody* circle2;
 	PhysBody* circle3;
