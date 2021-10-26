@@ -30,12 +30,10 @@ bool ModuleSceneIntro::Start()
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
-	//Images
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
 	map = App->textures->Load("pinball/Pinball_Map.png");
-	Poro_Cookie = App->textures->Load("pinball/Poro_Cookie.png");
 
 	//sound
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
@@ -46,8 +44,8 @@ bool ModuleSceneIntro::Start()
 	
 	//sensor
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
-	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150);
+	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
 	circle3 = App->physics->CreateCircleSensor(293, 378, 42);
@@ -55,8 +53,6 @@ bool ModuleSceneIntro::Start()
 
 	//audio sensors
 	Push_Sensor = App->physics->CreateRectangleSensor(485, 900, 10, 5);
-
-
 	return ret;
 }
 
@@ -176,13 +172,10 @@ update_status ModuleSceneIntro::Update()
 	{
 		int x, y;
 		c->data->GetPosition(x, y);
-		App->renderer->Blit(Poro_Cookie, x, y, NULL, 1.0f, c->data->GetRotation());
 		if(c->data->Contains(App->input->GetMouseX(), App->input->GetMouseY()))
-			App->renderer->Blit(circle, x, y, NULL, 1.0f, c->data->GetRotation());  
+			App->renderer->Blit(circle, x, y, NULL, 1.0f, c->data->GetRotation());
 		c = c->next;
-	
 	}
-
 
 	c = boxes.getFirst();
 

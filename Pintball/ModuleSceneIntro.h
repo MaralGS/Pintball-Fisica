@@ -42,7 +42,6 @@ public:
 	SDL_Texture* rick;
 	SDL_Texture* map;
 	SDL_Texture* Fonts;
-	SDL_Texture* Poro_Cookie = nullptr;
 	bool FTitle = true;
 
 	//Fonts
