@@ -45,7 +45,7 @@ public:
 	bool FTitle = true;
 
 	//Fonts
-	uint score = 0;
+	uint score = 000;
 	int scoreFont = -1;
 	char scoreText[150] = { "\0" };
 
