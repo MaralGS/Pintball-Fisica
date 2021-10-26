@@ -10,7 +10,7 @@
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	circle = box = rick = map = NULL;
+	circle = box = rick = map = ball = NULL;
 	ray_on = false;
 	sensed = false;
 }
@@ -33,7 +33,9 @@ bool ModuleSceneIntro::Start()
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
+	ball = App->textures->Load("Pinball/Poro_Coin.png");
 	map = App->textures->Load("pinball/Pinball_Map.png");
+	
 
 	//sound
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
@@ -85,8 +87,8 @@ update_status ModuleSceneIntro::Update()
 
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
-		App->physics->Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY())), 0);
-		circles.getLast()->data->listener = this;
+		balls.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 14));
+		balls.getLast()->data->listener = this;
 	}
 	
 	
@@ -202,7 +204,23 @@ update_status ModuleSceneIntro::Update()
 		App->renderer->Blit(rick, x, y, NULL, 1.0f, c->data->GetRotation());
 		c = c->next;
 	}
-	
+
+	c = balls.getFirst();
+
+	while (c != NULL)
+	{
+		int x, y;
+		c->data->GetPosition(x, y);
+		App->renderer->Blit(ball, x, y, NULL, 1.0f, c->data->GetRotation());
+		if (ray_on)
+		{
+			int hit = c->data->RayCast(ray.x, ray.y, mouse.x, mouse.y, normal.x, normal.y);
+			if (hit >= 0)
+				ray_hit = hit;
+		}
+		c = c->next;
+	}
+
 	
 
 	// ray -----------------

@@ -22,6 +22,7 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
+	p2List<PhysBody*> balls;
 	
 
 
@@ -41,6 +42,7 @@ public:
 	SDL_Texture* box;
 	SDL_Texture* rick;
 	SDL_Texture* map;
+	SDL_Texture* ball;
 	SDL_Texture* Fonts;
 	bool FTitle = true;
 
