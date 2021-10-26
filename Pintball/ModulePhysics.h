@@ -56,8 +56,6 @@ public:
 	PhysBody* CerD;
 	PhysBody* Barup;
 	PhysBody* LineBarup;
-	//b2BodyDef Ball;
-	PhysBody* Ball;
 	int positionPX = 488;
 	int positionPY = 940;
 	bool PAudio = false;

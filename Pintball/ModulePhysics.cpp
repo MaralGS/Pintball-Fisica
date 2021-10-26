@@ -372,25 +372,6 @@ bool ModulePhysics::Start()
 	//bola
 	{
 		App->scene_intro->balls.add(CreateCircle(500, 930, 14));
-		
-		/*Ball.type = b2_dynamicBody;
-		Ball.position.Set(10, 18);
-
-		b2Body* b = world->CreateBody(&Ball);
-
-		b2CircleShape shape;
-		shape.m_radius = PIXEL_TO_METERS(12);
-		b2FixtureDef fixture;
-		fixture.shape = &shape;
-		fixture.density = 1.0f;
-
-		b->CreateFixture(&fixture);
-
-		PhysBody* pbody = new PhysBody();
-		pbody->body = b;
-		b->SetUserData(pbody);
-		pbody->width = pbody->height = 5;*/
-
 	}
 	//BolaObj1
 	{
