@@ -47,8 +47,8 @@ bool ModuleSceneIntro::Start()
 	
 	//sensor
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
-	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150);
-	//Rebot = App->physics->CreateRectangleSensor(100,100, 100, 10);
+	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150,0);
+	Rebot = App->physics->CreateRectangleSensor(127, 727, 165, 10, 20);
 	//Rebot2 = App->physics->CreateRectangleSensor(218, 1030, 80, 150);
 	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
@@ -57,7 +57,7 @@ bool ModuleSceneIntro::Start()
 	circle4 = App->physics->CreateCircleSensor(223, 490, 42);
 
 	//audio sensors
-	Push_Sensor = App->physics->CreateRectangleSensor(485, 900, 10, 5);
+	Push_Sensor = App->physics->CreateRectangleSensor(485, 900, 10, 5, 0);
 	return ret;
 }
 
