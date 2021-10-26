@@ -31,6 +31,7 @@ public:
 	PhysBody* Loose;
 	PhysBody* Rebot;
 	PhysBody* Rebot2;
+	PhysBody* Ball;
 	PhysBody* circle1;
 	PhysBody* circle2;
 	PhysBody* circle3;
@@ -39,6 +40,8 @@ public:
 	PhysBody* Stick_LEFT;
 	bool sensed;
 	bool death;
+	int positionPX = 488;
+	int positionPY = 940;
 
 	SDL_Texture* circle;
 	SDL_Texture* box;

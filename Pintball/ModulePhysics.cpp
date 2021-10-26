@@ -369,32 +369,7 @@ bool ModulePhysics::Start()
 		fixture8.density = 1.0f;
 		big_Map8->CreateFixture(&fixture8);
 	}
-	//bola
-	{
-
-		//App->scene_intro->balls.add(CreateCircle(500, 930, 14));
-
-		Ball = CreateCircle(positionPX, positionPY, 14);
-
-		/*Ball.type = b2_dynamicBody;
-		Ball.position.Set(10, 18);
-
-		b2Body* b = world->CreateBody(&Ball);
-
-		b2CircleShape shape;
-		shape.m_radius = PIXEL_TO_METERS(12);
-		b2FixtureDef fixture;
-		fixture.shape = &shape;
-		fixture.density = 1.0f;
-
-		b->CreateFixture(&fixture);
-
-		PhysBody* pbody = new PhysBody();
-		pbody->body = b;
-		b->SetUserData(pbody);
-		pbody->width = pbody->height = 5;*/
-
-	}
+	
 	//BolaObj1
 	{
 		b2BodyDef body;
@@ -885,10 +860,10 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 		PAudio = true;
 	}
 
-	if (physA == App->scene_intro->Rebot)
+	if (physA == App->scene_intro->Rebot || physA == App->scene_intro->Rebot2)
 	{
 		App->scene_intro->balls; 
-		Ball->body->ApplyForceToCenter(b2Vec2(0, -200), true);
+		App->scene_intro->Ball->body->ApplyForceToCenter(b2Vec2(0, -200), true);
 	}
 
 	if (physA == App->scene_intro->Loose)

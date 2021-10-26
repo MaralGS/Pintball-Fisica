@@ -30,6 +30,8 @@ bool ModuleSceneIntro::Start()
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
+	Ball = App->physics->CreateCircle(positionPX, positionPY, 14);
+	Ball->listener = this;
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
@@ -85,7 +87,7 @@ update_status ModuleSceneIntro::Update()
 
 	if(App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
 	{
-		App->physics->Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY())), 0);
+		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY())), 0);
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
@@ -124,9 +126,9 @@ update_status ModuleSceneIntro::Update()
 		{
 		vidas = 3;
 		score = 0;
-		App->physics->Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(500), PIXEL_TO_METERS(930)), 0);
-		App->physics->Ball->body->SetAngularVelocity(0);
-		App->physics->Ball->body->SetLinearVelocity(b2Vec2(0, 0));
+		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(500), PIXEL_TO_METERS(930)), 0);
+		Ball->body->SetAngularVelocity(0);
+		Ball->body->SetLinearVelocity(b2Vec2(0, 0));
 		
 		Finish_End = false;
 		}
@@ -271,9 +273,9 @@ update_status ModuleSceneIntro::Update()
 		App->physics->PAudio = false;
 	}
 	if (death == true) {
-		App->physics->Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(500), PIXEL_TO_METERS(930)), 0);
-		App->physics->Ball->body->SetAngularVelocity(0);
-		App->physics->Ball->body->SetLinearVelocity(b2Vec2(0, 0));
+		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(500), PIXEL_TO_METERS(930)), 0);
+		Ball->body->SetAngularVelocity(0);
+		Ball->body->SetLinearVelocity(b2Vec2(0, 0));
 		death = false;
 	}
 
