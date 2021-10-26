@@ -33,7 +33,8 @@ bool ModuleSceneIntro::Start()
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
-	ball = App->textures->Load("Pinball/Poro_Coin.png");
+	//ball = App->textures->Load("Pinball/Poro_Coin.png");
+	ball = App->textures->Load("Pinball/ball.png");
 	map = App->textures->Load("pinball/Pinball_Map.png");
 	
 

@@ -492,7 +492,7 @@ bool ModulePhysics::Start()
 		StickD.lowerAngle = -30 * DEGTORAD;
 		StickD.upperAngle = 30 * DEGTORAD;
 
-		StickD.localAnchorA.Set(PIXEL_TO_METERS(50), 0.2);
+		StickD.localAnchorA.Set(PIXEL_TO_METERS(48), 0.2);
 		StickD.localAnchorB.Set(0, 0);
 
 		b2RevoluteJoint* StickDer = (b2RevoluteJoint*)App->physics->world->CreateJoint(&StickD);
@@ -512,7 +512,7 @@ bool ModulePhysics::Start()
 		StickE.lowerAngle = -30 * DEGTORAD;
 		StickE.upperAngle = 30 * DEGTORAD;
 
-		StickE.localAnchorA.Set(PIXEL_TO_METERS(-50), 0.2);
+		StickE.localAnchorA.Set(PIXEL_TO_METERS(-48), 0.2);
 		StickE.localAnchorB.Set(0, 0);
 
 		b2RevoluteJoint* StickEsq = (b2RevoluteJoint*)App->physics->world->CreateJoint(&StickE);
