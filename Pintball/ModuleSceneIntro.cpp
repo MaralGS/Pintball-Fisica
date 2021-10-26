@@ -83,10 +83,10 @@ update_status ModuleSceneIntro::Update()
 		ray.y = App->input->GetMouseY();
 	}
 
-	/*if(App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
+	if(App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
 	{
 		App->physics->Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY())), 0);
-	}*/
+	}
 
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
@@ -124,8 +124,9 @@ update_status ModuleSceneIntro::Update()
 		{
 		vidas = 3;
 		score = 0;
-		balls.clear();
-		balls.add(App->physics->CreateCircle(500, 930, 14));
+		App->physics->Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(500), PIXEL_TO_METERS(930)), 0);
+		App->physics->Ball->body->SetAngularVelocity(0);
+		App->physics->Ball->body->SetLinearVelocity(b2Vec2(0, 0));
 		
 		Finish_End = false;
 		}

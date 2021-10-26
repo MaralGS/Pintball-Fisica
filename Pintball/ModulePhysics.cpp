@@ -371,9 +371,9 @@ bool ModulePhysics::Start()
 	}
 	//bola
 	{
-<<<<<<< HEAD
-		App->scene_intro->balls.add(CreateCircle(500, 930, 14));
-=======
+
+		//App->scene_intro->balls.add(CreateCircle(500, 930, 14));
+
 		Ball = CreateCircle(positionPX, positionPY, 14);
 
 		/*Ball.type = b2_dynamicBody;
@@ -394,7 +394,6 @@ bool ModulePhysics::Start()
 		b->SetUserData(pbody);
 		pbody->width = pbody->height = 5;*/
 
->>>>>>> parent of d08c816 (Ball Fixed)
 	}
 	//BolaObj1
 	{
@@ -889,7 +888,7 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 	if (physA == App->scene_intro->Rebot)
 	{
 		App->scene_intro->balls; 
-		
+		Ball->body->ApplyForceToCenter(b2Vec2(0, -200), true);
 	}
 
 	if (physA == App->scene_intro->Loose)
