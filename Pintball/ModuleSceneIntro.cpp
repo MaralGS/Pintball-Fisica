@@ -101,12 +101,12 @@ update_status ModuleSceneIntro::Update()
 		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50));
 	}	
 	
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
+	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		b2Vec2 F = b2Vec2(0, -1000);
 		App->physics->RecE->body->ApplyForceToCenter(F, 1);
 	}	
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		b2Vec2 F = b2Vec2(0, -1000);
 		App->physics->RecD->body->ApplyForceToCenter(F, 1);
