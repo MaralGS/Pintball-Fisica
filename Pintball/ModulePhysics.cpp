@@ -371,8 +371,8 @@ bool ModulePhysics::Start()
 	}
 	//bola
 	{
-		Ball = CreateCircle(positionPX, positionPY, 14);
-
+		App->scene_intro->balls.add(CreateCircle(500, 930, 14));
+		
 		/*Ball.type = b2_dynamicBody;
 		Ball.position.Set(10, 18);
 
