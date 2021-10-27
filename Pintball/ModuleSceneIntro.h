@@ -37,6 +37,7 @@ public:
 	PhysBody* circle4;
 	PhysBody* Push_Sensor;
 	PhysBody* Stick_LEFT;
+	PhysBody* BoxBlock;
 	bool sensed;
 	bool death;
 	int positionPX = 488;
@@ -51,6 +52,11 @@ public:
 	SDL_Texture* Fonts;
 	bool FTitle = true;
 	bool Finish_End = false;
+	bool LScore = false;
+	bool B1 = false;
+	bool B2 = false;
+	bool B3 = false;
+	bool B4 = false;
 
 	//Fonts
 	
@@ -59,6 +65,8 @@ public:
 	//points and HP
 	uint score = 000;
 	uint Hiscore = 000;
+	uint LastScore = 000;
+
 	int puntuacio = 0;
 	int scoreFont = -1;
 	int vidas = 3;
