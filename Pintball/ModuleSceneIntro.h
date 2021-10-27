@@ -50,6 +50,7 @@ public:
 	SDL_Texture* map;
 	SDL_Texture* ball;
 	SDL_Texture* Fonts;
+	SDL_Texture* FlipperE;
 	bool FTitle = true;
 	bool Finish_End = false;
 	bool LScore = false;

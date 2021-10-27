@@ -33,13 +33,14 @@ bool ModuleSceneIntro::Start()
 	Ball = App->physics->CreateCircle(positionPX, positionPY, 14);
 	Ball->listener = this;
 	Ball->body->SetBullet(true);
-
+	App->physics->RecE->listener = this;
 
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
 	EndScreen = App->textures->Load("pinball/End_Screen.png");
 	ball = App->textures->Load("Pinball/Poro_Coin.png");
+	FlipperE = App->textures->Load("pinball/FlipperE.png");
 	map = App->textures->Load("pinball/Pinball_Map.png");
 	
 
@@ -60,7 +61,7 @@ bool ModuleSceneIntro::Start()
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
 	circle3 = App->physics->CreateCircleSensor(293, 378, 42);
 	circle4 = App->physics->CreateCircleSensor(223, 490, 42);
-
+	
 	//audio sensors
 	Push_Sensor = App->physics->CreateRectangleSensor(485, 900, 10, 5, 0);
 	return ret;
@@ -227,18 +228,22 @@ update_status ModuleSceneIntro::Update()
 	}
 
 
-	
+	{
 		int x, y;
-		Ball->GetPosition(x,y);
-		App->renderer->Blit(ball, x, y, NULL, 1.0f,Ball->GetRotation());
+		Ball->GetPosition(x, y);
+		App->renderer->Blit(ball, x, y, NULL, 1.0f, Ball->GetRotation());
 		if (ray_on)
 		{
 			int hit = c->data->RayCast(ray.x, ray.y, mouse.x, mouse.y, normal.x, normal.y);
 			if (hit >= 0)
 				ray_hit = hit;
 		}
-	
-
+	}
+	{
+		int x, y;
+		App->physics->RecE->GetPosition(x, y);
+		App->renderer->Blit(FlipperE, x, y, NULL, 1.0f,App->physics->RecE->GetRotation());
+	}
 	
 
 	// ray -----------------
