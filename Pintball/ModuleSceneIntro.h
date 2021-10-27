@@ -51,6 +51,7 @@ public:
 	SDL_Texture* ball;
 	SDL_Texture* Fonts;
 	SDL_Texture* FlipperE;
+	SDL_Texture* FlipperD;
 	bool FTitle = true;
 	bool Finish_End = false;
 	bool LScore = false;

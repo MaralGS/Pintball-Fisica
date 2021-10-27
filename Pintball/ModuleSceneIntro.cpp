@@ -244,7 +244,11 @@ update_status ModuleSceneIntro::Update()
 		App->physics->RecE->GetPosition(x, y);
 		App->renderer->Blit(FlipperE, x, y, NULL, 1.0f,App->physics->RecE->GetRotation());
 	}
-	
+	{
+		int x, y;
+		App->physics->RecE->GetPosition(x, y);
+		App->renderer->Blit(FlipperD, x, y, NULL, 1.0f, App->physics->RecD->GetRotation());
+	}
 
 	// ray -----------------
 	if(ray_on == true)
