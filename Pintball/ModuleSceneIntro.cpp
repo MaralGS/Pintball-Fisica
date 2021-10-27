@@ -259,12 +259,6 @@ update_status ModuleSceneIntro::Update()
 		App->renderer->Blit(EndScreen, 0, 0, NULL);
 		Finish_End = true;
 	}
-	
-	/*if (score = score + 100)
-	{
-		vidas++;
-		score++;
-	}*/
 
 	if (App->physics->PAudio == true)
 	{
@@ -278,10 +272,20 @@ update_status ModuleSceneIntro::Update()
 		death = false;
 	}
 
+	if (Hiscore < score)
+	{
+		Hiscore = Hiscore + 100;
+	}
+
+
+
 	sprintf_s(scoreText, "pts%6d", score);
 	App->fonts->DrawTxt(320, 920, scoreFont, scoreText);
 	sprintf_s(scoreText,"ph %3d", vidas);
 	App->fonts->DrawTxt(30, 920, scoreFont, scoreText);
+
+	sprintf_s(scoreText,"ph %3d", Hiscore);
+	App->fonts->DrawTxt(30, 940, scoreFont, scoreText);
 
 	return UPDATE_CONTINUE;
 }
