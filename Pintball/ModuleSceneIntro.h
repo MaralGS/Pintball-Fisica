@@ -52,6 +52,7 @@ public:
 	SDL_Texture* Fonts;
 	bool FTitle = true;
 	bool Finish_End = false;
+	bool LScore = false;
 	bool B1 = false;
 	bool B2 = false;
 	bool B3 = false;
@@ -64,6 +65,8 @@ public:
 	//points and HP
 	uint score = 000;
 	uint Hiscore = 000;
+	uint LastScore = 000;
+
 	int puntuacio = 0;
 	int scoreFont = -1;
 	int vidas = 3;

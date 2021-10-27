@@ -275,12 +275,11 @@ update_status ModuleSceneIntro::Update()
 		Ball->body->SetAngularVelocity(0);
 		Ball->body->SetLinearVelocity(b2Vec2(0, 0));
 		death = false;
+		
 	}
 
-	if (Hiscore < score)
-	{
-		Hiscore = Hiscore + 100;
-	}
+		
+
 
 	if (B1 == true && B2 == true && B3 == true && B4 == true)
 	{
@@ -292,14 +291,31 @@ update_status ModuleSceneIntro::Update()
 		
 	}
 
+	if (Hiscore < score)
+	{
+		Hiscore = Hiscore + 100;
+	}
 
-	sprintf_s(scoreText, "pts%2d", score);
+	/*if (LScore == true)
+	{
+		LastScore = 0;
+
+	}*/
+
+
+	sprintf_s(scoreText, "pts;%2d", score);
+	App->fonts->DrawTxt(320, 900, scoreFont, scoreText);
+	
+	sprintf_s(scoreText,"max pts;%2d", Hiscore);
 	App->fonts->DrawTxt(320, 920, scoreFont, scoreText);
-	sprintf_s(scoreText,"ph %3d", vidas);
+
+	sprintf_s(scoreText,"last pts;%2d", LastScore);
+	App->fonts->DrawTxt(320, 940, scoreFont, scoreText);
+
+	sprintf_s(scoreText,"hp;%3d", vidas);
 	App->fonts->DrawTxt(30, 920, scoreFont, scoreText);
 
-	sprintf_s(scoreText,"max pts %2d", Hiscore);
-	App->fonts->DrawTxt(30, 940, scoreFont, scoreText);
+	
 
 	return UPDATE_CONTINUE;
 }

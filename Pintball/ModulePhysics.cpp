@@ -870,15 +870,22 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 
 	if (physA == App->scene_intro->Loose)
 	{
+
+		App->scene_intro->LastScore = App->scene_intro->score;
+	
 		if (App->scene_intro->vidas > 1)
 		{
-			App->scene_intro->death = true;
-			App->scene_intro->vidas--;
-			App->scene_intro->score = 0;
+				App->scene_intro->death = true;
+				App->scene_intro->vidas--;
+				App->scene_intro->score = 0;
+				App->scene_intro->LScore == false;
 		}
+
+		
 		else {
 		App->scene_intro->vidas--;
 		}
+		
 		
 	}
 	
