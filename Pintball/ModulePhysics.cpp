@@ -873,6 +873,7 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 		{
 			App->scene_intro->death = true;
 			App->scene_intro->vidas--;
+			App->scene_intro->score = 0;
 		}
 		else {
 		App->scene_intro->vidas--;
@@ -883,6 +884,7 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 	if ((physB == App->scene_intro->circle1 || physB == App->scene_intro->circle2 || physB == App->scene_intro->circle3 || physB == App->scene_intro->circle4) && physA == App->scene_intro->Ball)
 	{
 		App->scene_intro->score += 100;
+
 	}
 
 	if(physB && physB->listener != NULL)

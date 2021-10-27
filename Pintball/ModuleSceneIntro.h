@@ -18,7 +18,7 @@ public:
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 	
 public:
-	int vidas = 3;
+	
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
@@ -53,9 +53,15 @@ public:
 	bool Finish_End = false;
 
 	//Fonts
-	uint score = 000;
-	int scoreFont = -1;
+	
 	char scoreText[150] = { "\0" };
+	
+	//points and HP
+	uint score = 000;
+	uint Hiscore = 000;
+	int puntuacio = 0;
+	int scoreFont = -1;
+	int vidas = 3;
 
 	uint bonus_fx;
 	uint Push_fx;
