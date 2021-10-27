@@ -33,6 +33,8 @@ bool ModuleSceneIntro::Start()
 	Ball = App->physics->CreateCircle(positionPX, positionPY, 14);
 	Ball->listener = this;
 	Ball->body->SetBullet(true);
+
+
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
 	rick = App->textures->Load("pinball/rick_head.png");
@@ -51,8 +53,8 @@ bool ModuleSceneIntro::Start()
 	//sensor
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150,0);
-	Rebot = App->physics->CreateRectangleSensor(127, 727, 165, 10, 20);
-	Rebot2 = App->physics->CreateRectangleSensor(315, 727, 165, 10, -20);
+	Rebot = App->physics->CreateRectangleSensor(132, 727, 160, 6, 20);
+	Rebot2 = App->physics->CreateRectangleSensor(315, 727, 160, 6, -20);
 	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
@@ -94,7 +96,6 @@ update_status ModuleSceneIntro::Update()
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 14));
-		circles.getLast()->data->listener = this;
 	}
 	
 	

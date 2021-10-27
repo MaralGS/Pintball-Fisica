@@ -625,6 +625,7 @@ PhysBody* ModulePhysics::CreateCircleSensor(int x, int y, int radius)
 
 	b2CircleShape ball;
 	ball.m_radius = PIXEL_TO_METERS(radius);
+
 	b2FixtureDef fixture;
 	fixture.shape = &ball;
 	fixture.density = 1.0f;
@@ -863,7 +864,7 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 	if (physA == App->scene_intro->Rebot || physA == App->scene_intro->Rebot2)
 	{
 		//App->scene_intro->balls; 
-		App->scene_intro->Ball->body->ApplyForceToCenter(b2Vec2(0, -200), true);
+		App->scene_intro->Ball->body->ApplyForceToCenter(b2Vec2(50, -100), true);
 	}
 
 	if (physA == App->scene_intro->Loose)
@@ -879,7 +880,7 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 		
 	}
 	
-	if (physA == App->scene_intro->circle1 || physA == App->scene_intro->circle2 || physA == App->scene_intro->circle3 || physA == App->scene_intro->circle4)
+	if ((physB == App->scene_intro->circle1 || physB == App->scene_intro->circle2 || physB == App->scene_intro->circle3 || physB == App->scene_intro->circle4) && physA == App->scene_intro->Ball)
 	{
 		App->scene_intro->score += 100;
 	}
