@@ -55,7 +55,6 @@ bool ModuleSceneIntro::Start()
 	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150,0);
 	Rebot = App->physics->CreateRectangleSensor(132, 727, 160, 6, 20);
 	Rebot2 = App->physics->CreateRectangleSensor(315, 727, 160, 6, -20);
-	Block = App->physics->CreateRectangleSensor(465, 150, 30, 5, 5);
 	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
