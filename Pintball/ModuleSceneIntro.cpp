@@ -55,6 +55,7 @@ bool ModuleSceneIntro::Start()
 	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150,0);
 	Rebot = App->physics->CreateRectangleSensor(132, 727, 160, 6, 20);
 	Rebot2 = App->physics->CreateRectangleSensor(315, 727, 160, 6, -20);
+	Block = App->physics->CreateRectangleSensor(465, 150, 30, 5, 5);
 	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
@@ -102,7 +103,7 @@ update_status ModuleSceneIntro::Update()
 
 	if(App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 	{
-		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50));
+		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50,0));
 	}	
 	
 	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
@@ -254,6 +255,11 @@ update_status ModuleSceneIntro::Update()
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
 
+	if (true)
+	{
+
+	}
+
 	if (vidas <= 0)
 	{
 		App->renderer->Blit(EndScreen, 0, 0, NULL);
@@ -277,14 +283,23 @@ update_status ModuleSceneIntro::Update()
 		Hiscore = Hiscore + 100;
 	}
 
+	if (B1 == true && B2 == true && B3 == true && B4 == true)
+	{
+		vidas++;
+		B1 = false;
+		B2 = false;
+		B3 = false;
+		B4 = false;
+		
+	}
 
 
-	sprintf_s(scoreText, "pts%6d", score);
+	sprintf_s(scoreText, "pts%2d", score);
 	App->fonts->DrawTxt(320, 920, scoreFont, scoreText);
 	sprintf_s(scoreText,"ph %3d", vidas);
 	App->fonts->DrawTxt(30, 920, scoreFont, scoreText);
 
-	sprintf_s(scoreText,"ph %3d", Hiscore);
+	sprintf_s(scoreText,"max pts %2d", Hiscore);
 	App->fonts->DrawTxt(30, 940, scoreFont, scoreText);
 
 	return UPDATE_CONTINUE;

@@ -457,7 +457,7 @@ bool ModulePhysics::Start()
 	//Stick Dret
 	{
 	
-		RecD = CreateRectangle(300, 790, 60, 12);
+		RecD = CreateRectangle(300, 790, 60, 12,0);
 		CerD = App->physics->CreateCircle(300, 850, 2);
 		CerD->body->SetType(b2_staticBody);
 
@@ -477,7 +477,7 @@ bool ModulePhysics::Start()
 	}
 	//Stick Esquerra
 	{
-		RecE = CreateRectangle(125, 790, 60, 12);
+		RecE = CreateRectangle(125, 790, 60, 12,0);
 		CerE = App->physics->CreateCircle(140, 850, 2);
 		CerE->body->SetType(b2_staticBody);
 
@@ -498,8 +498,8 @@ bool ModulePhysics::Start()
 	//Bar Up
 	{
 	
-	Barup = CreateRectangle(488, 953, 25, 12);
-	LineBarup = CreateRectangle(488, 953, 5, 20);
+	Barup = CreateRectangle(488, 953, 25, 12,0);
+	LineBarup = CreateRectangle(488, 953, 5, 20,0);
 	LineBarup->body->SetType(b2_staticBody);
 
 	bar.bodyA = Barup->body;
@@ -561,11 +561,12 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
+PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, float rotation)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+	body.angle = rotation;
 
 	b2Body* b = world->CreateBody(&body);
 	b2PolygonShape box;
@@ -884,9 +885,27 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 	if ((physB == App->scene_intro->circle1 || physB == App->scene_intro->circle2 || physB == App->scene_intro->circle3 || physB == App->scene_intro->circle4) && physA == App->scene_intro->Ball)
 	{
 		App->scene_intro->score += 100;
+		if (physB == App->scene_intro->circle1 && physA == App->scene_intro->Ball)
+		{
+			App->scene_intro->B1 = true;
+		}
+		
+		if (physB == App->scene_intro->circle2 && physA == App->scene_intro->Ball)
+		{
+			App->scene_intro->B2 = true;
+		}
+		
+		if (physB == App->scene_intro->circle3 && physA == App->scene_intro->Ball)
+		{
+			App->scene_intro->B3 = true;
+		}
+		
+		if (physB == App->scene_intro->circle4 && physA == App->scene_intro->Ball)
+		{
+			App->scene_intro->B4 = true;
+		}
 
 	}
-
 	if(physB && physB->listener != NULL)
 		physB->listener->OnCollision(physB, physA);
 }
