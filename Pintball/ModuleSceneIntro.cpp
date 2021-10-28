@@ -42,6 +42,7 @@ bool ModuleSceneIntro::Start()
 	EndScreen = App->textures->Load("pinball/End_Screen.png");
 	ball = App->textures->Load("Pinball/Poro_Coin.png");
 	FlipperE = App->textures->Load("pinball/FlipperE.png");
+	FlipperD = App->textures->Load("pinball/FlipperD.png");
 	map = App->textures->Load("pinball/Pinball_Map.png");
 	
 
@@ -244,12 +245,12 @@ update_status ModuleSceneIntro::Update()
 	{
 		int x, y;
 		App->physics->RecE->GetPosition(x, y);
-		App->renderer->Blit(FlipperE, x, y, NULL, 1.0f,App->physics->RecE->GetRotation());
+		App->renderer->Blit(FlipperE, x-5, y - 20, NULL, 0.00f, App->physics->RecE->GetRotation() - 32);
 	}
 	{
 		int x, y;
-		App->physics->RecE->GetPosition(x, y);
-		App->renderer->Blit(FlipperD, x, y, NULL, 1.0f, App->physics->RecD->GetRotation());
+		App->physics->RecD->GetPosition(x, y);
+		App->renderer->Blit(FlipperD, x, y - 20, NULL, 0.00f, App->physics->RecD->GetRotation() + 35);
 	}
 
 	// ray -----------------
