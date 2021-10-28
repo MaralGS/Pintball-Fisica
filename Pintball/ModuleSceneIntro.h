@@ -31,6 +31,7 @@ public:
 	PhysBody* Rebot;
 	PhysBody* Rebot2;
 	PhysBody* Ball;
+	PhysBody* Bloker;
 	PhysBody* circle1;
 	PhysBody* circle2;
 	PhysBody* circle3;
@@ -42,6 +43,8 @@ public:
 	bool death;
 	int positionPX = 488;
 	int positionPY = 940;
+	
+
 
 	SDL_Texture* circle;
 	SDL_Texture* box;
@@ -59,6 +62,8 @@ public:
 	bool B2 = false;
 	bool B3 = false;
 	bool B4 = false;
+	bool BLK = false;
+
 
 	//Fonts
 	

@@ -34,6 +34,7 @@ bool ModuleSceneIntro::Start()
 	Ball->listener = this;
 	Ball->body->SetBullet(true);
 	App->physics->RecE->listener = this;
+	Bloker = App->physics->CreateBlocker(0, 0, 40, 5, 40);
 
 	circle = App->textures->Load("pinball/wheel.png"); 
 	box = App->textures->Load("pinball/crate.png");
@@ -61,6 +62,7 @@ bool ModuleSceneIntro::Start()
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
 	circle3 = App->physics->CreateCircleSensor(293, 378, 42);
 	circle4 = App->physics->CreateCircleSensor(223, 490, 42);
+	BoxBlock = App->physics->CreateRectangleSensor(410, 80, 10, 5, 10);
 	
 	//audio sensors
 	Push_Sensor = App->physics->CreateRectangleSensor(485, 900, 10, 5, 0);
@@ -283,7 +285,9 @@ update_status ModuleSceneIntro::Update()
 		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(500), PIXEL_TO_METERS(930)), 0);
 		Ball->body->SetAngularVelocity(0);
 		Ball->body->SetLinearVelocity(b2Vec2(0, 0));
+		BLK = false;
 		death = false;
+		Bloker->body->SetTransform(b2Vec2(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0)), 40);
 		
 	}
 
@@ -305,12 +309,10 @@ update_status ModuleSceneIntro::Update()
 		Hiscore = Hiscore + 100;
 	}
 
-	/*if (LScore == true)
+	if (BLK == true)
 	{
-		LastScore = 0;
-
-	}*/
-
+			Bloker->body->SetTransform(b2Vec2(PIXEL_TO_METERS(473), PIXEL_TO_METERS(152)), 40);
+	}
 
 	sprintf_s(scoreText, "pts;%2d", score);
 	App->fonts->DrawTxt(320, 900, scoreFont, scoreText);
