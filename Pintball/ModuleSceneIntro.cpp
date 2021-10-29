@@ -135,7 +135,9 @@ update_status ModuleSceneIntro::Update()
 		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(500), PIXEL_TO_METERS(930)), 0);
 		Ball->body->SetAngularVelocity(0);
 		Ball->body->SetLinearVelocity(b2Vec2(0, 0));
-		
+		BLK = false;
+		death = false;
+		Bloker->body->SetTransform(b2Vec2(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0)), 40);
 		Finish_End = false;
 		}
 		

@@ -965,21 +965,25 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 		if (physB == App->scene_intro->circle1 && physA == App->scene_intro->Ball)
 		{
 			App->scene_intro->B1 = true;
+			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(0, 10));
 		}
 		
 		if (physB == App->scene_intro->circle2 && physA == App->scene_intro->Ball)
 		{
 			App->scene_intro->B2 = true;
+			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(5, -10));
 		}
 		
 		if (physB == App->scene_intro->circle3 && physA == App->scene_intro->Ball)
 		{
 			App->scene_intro->B3 = true;
+			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(-5, -10));
 		}
 		
 		if (physB == App->scene_intro->circle4 && physA == App->scene_intro->Ball)
 		{
 			App->scene_intro->B4 = true;
+			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(0, 10));
 		}
 
 	}
