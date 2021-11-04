@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <time.h>
+#include <ctime>
 #include "Application.h"
 #include "Globals.h"
 
@@ -15,6 +17,14 @@ enum main_states
 	MAIN_EXIT
 };
 
+double CtimeDif(clock_t t1, clock_t t2)
+{
+	double Dtick = t2 - t1;
+	double Dms = (Dtick) / (CLOCKS_PER_SEC / 1000);
+	return Dms;
+}
+
+
 int main(int argc, char ** argv)
 {
 	LOG("Starting game '%s'...", TITLE);
@@ -23,8 +33,11 @@ int main(int argc, char ** argv)
 	main_states state = MAIN_CREATION;
 	Application* App = NULL;
 
+	
+	
 	while (state != MAIN_EXIT)
 	{
+		clock_t start = clock();
 		switch (state)
 		{
 		case MAIN_CREATION:
@@ -35,7 +48,6 @@ int main(int argc, char ** argv)
 			break;
 
 		case MAIN_START:
-
 			LOG("-------------- Application Init --------------");
 			if (App->Init() == false)
 			{
@@ -48,6 +60,7 @@ int main(int argc, char ** argv)
 				LOG("-------------- Application Update --------------");
 			}
 
+			
 			break;
 
 		case MAIN_UPDATE:
@@ -80,6 +93,9 @@ int main(int argc, char ** argv)
 			break;
 
 		}
+		clock_t end = clock();
+		float CelapsetTime = CtimeDif(start, end);
+		//16-	float CelapsetTime = CtimeDif(start, end);
 	}
 
 	delete App;
