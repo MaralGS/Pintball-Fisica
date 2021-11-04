@@ -95,7 +95,9 @@ int main(int argc, char ** argv)
 		}
 		clock_t end = clock();
 		float CelapsetTime = CtimeDif(start, end);
-		//Sleep(dt - CelapsetTime);
+		if (dt - CelapsetTime > 0.0f) {
+			Sleep(dt - CelapsetTime);
+		}
 	}
 
 	delete App;
