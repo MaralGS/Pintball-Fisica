@@ -28,7 +28,7 @@ double CtimeDif(clock_t t1, clock_t t2)
 int main(int argc, char ** argv)
 {
 	LOG("Starting game '%s'...", TITLE);
-
+	float dt = 1.0 / 60.0;
 	int main_return = EXIT_FAILURE;
 	main_states state = MAIN_CREATION;
 	Application* App = NULL;
@@ -95,7 +95,7 @@ int main(int argc, char ** argv)
 		}
 		clock_t end = clock();
 		float CelapsetTime = CtimeDif(start, end);
-		//16-	float CelapsetTime = CtimeDif(start, end);
+		//Sleep(dt - CelapsetTime);
 	}
 
 	delete App;
