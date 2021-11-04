@@ -96,7 +96,7 @@ int main(int argc, char ** argv)
 		clock_t end = clock();
 		float CelapsetTime = CtimeDif(start, end);
 		if (dt - CelapsetTime > 0.0f) {
-			Sleep(dt - CelapsetTime);
+		Sleep(dt - CelapsetTime);
 		}
 	}
 

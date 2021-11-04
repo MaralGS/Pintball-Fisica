@@ -80,6 +80,8 @@ public:
 
 	uint bonus_fx;
 	uint Push_fx;
+	uint Ping_fx;
+	uint Hit_fx;
 	p2Point<int> ray;
 	bool ray_on;
 };

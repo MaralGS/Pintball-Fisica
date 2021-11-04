@@ -47,8 +47,10 @@ bool ModuleSceneIntro::Start()
 	
 
 	//sound
-	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
-	Push_fx = App->audio->LoadFx("pinball/Push_Ball.wav");
+	bonus_fx = App->audio->LoadFx("pinball/audios/bonus.wav");
+	Push_fx = App->audio->LoadFx("pinball/audios/Push_Ball.wav");
+	Ping_fx = App->audio->LoadFx("pinball/audios/Ping.wav");
+	Hit_fx = App->audio->LoadFx("pinball/audios/Hit.wav");
 
 	// fonts
 	Fonts = App->textures->Load("pinball/fonts.png");
@@ -268,11 +270,6 @@ update_status ModuleSceneIntro::Update()
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
 
-	if (true)
-	{
-
-	}
-
 	if (vidas <= 0)
 	{
 		App->renderer->Blit(EndScreen, 0, 0, NULL);
@@ -281,7 +278,7 @@ update_status ModuleSceneIntro::Update()
 
 	if (App->physics->PAudio == true)
 	{
-		App->audio->PlayFx(bonus_fx);
+		App->audio->PlayFx(Push_fx);
 		App->physics->PAudio = false;
 	}
 	if (death == true) {
@@ -338,8 +335,10 @@ update_status ModuleSceneIntro::Update()
 void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	int x, y;
-
 	App->audio->PlayFx(bonus_fx);
-	
 
+	if (bodyA == Ball && (bodyB == App->physics->RecD || bodyB == App->physics->RecE))
+	{
+		App->audio->PlayFx(App->scene_intro->Hit_fx);
+	}
 }

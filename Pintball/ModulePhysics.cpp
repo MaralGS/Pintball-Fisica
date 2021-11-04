@@ -4,6 +4,7 @@
 #include "ModuleRender.h"
 #include "ModulePhysics.h"
 #include "ModuleSceneIntro.h"
+#include "ModuleAudio.h"
 #include "p2Point.h"
 #include "math.h"
 
@@ -42,36 +43,6 @@ bool ModulePhysics::Start()
 	
 	//map limits
 	{ 
-		//V2
-		int Pinball_Map[54] = {
-		255, 953,
-	504, 954,
-	504, 210,
-	495, 166,
-	476, 127,
-	454, 96,
-	434, 75,
-	398, 47,
-	347, 22,
-	298, 10,
-	249, 6,
-	188, 7,
-	143, 19,
-	96, 43,
-	50, 86,
-	30, 114,
-	10, 162,
-	2, 197,
-	0, 361,
-	25, 427,
-	48, 520,
-	26, 600,
-	26, 788,
-	184, 955,
-	184, 1108,
-	254, 1108,
-	254, 953
-		};
 		b2BodyDef body;
 		body.type = b2_staticBody;
 		body.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -97,15 +68,6 @@ bool ModulePhysics::Start()
 	}
 	//P.esquerra1
 	{
-	int Pquerra[14] = {
-	51, 148,
-	33, 235,
-	33, 348,
-	107, 270,
-	132, 264,
-	112, 184,
-	50, 148
-	};
 	b2BodyDef body2;
 	body2.type = b2_staticBody;
 	body2.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0)* 0.8f);
@@ -115,8 +77,8 @@ bool ModulePhysics::Start()
 
 	for (int i = 0; i < 7; i++)
 	{
-		points2[i].x = PIXEL_TO_METERS(Pquerra[i * 2]);
-		points2[i].y = PIXEL_TO_METERS(Pquerra[(i * 2) + 1]);
+		points2[i].x = PIXEL_TO_METERS(Pquerra1[i * 2]);
+		points2[i].y = PIXEL_TO_METERS(Pquerra1[(i * 2) + 1]);
 	}
 
 	b2ChainShape Chain2;
@@ -125,18 +87,9 @@ bool ModulePhysics::Start()
 	fixture2.shape = &Chain2;
 	fixture2.density = 1.0f;
 	big_Map2->CreateFixture(&fixture2);
-	}//P.esquerra1
+	}
 	//P.esquerra2
 	{
-	int Pquerra[14] = {
-	56, 647,
-	55, 771,
-	140, 857,
-	155, 843,
-	61, 749,
-	60, 647,
-	55, 647
-	};
 	b2BodyDef body2;
 	body2.type = b2_staticBody;
 	body2.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0)* 0.8f);
@@ -146,8 +99,8 @@ bool ModulePhysics::Start()
 
 	for (int i = 0; i < 7; i++)
 	{
-		points2[i].x = PIXEL_TO_METERS(Pquerra[i * 2]);
-		points2[i].y = PIXEL_TO_METERS(Pquerra[(i * 2) + 1]);
+		points2[i].x = PIXEL_TO_METERS(Pquerra2[i * 2]);
+		points2[i].y = PIXEL_TO_METERS(Pquerra2[(i * 2) + 1]);
 	}
 
 	b2ChainShape Chain2;
@@ -159,15 +112,6 @@ bool ModulePhysics::Start()
 	}
 	//P.dreta1
 	{
-	int Pdreta[14] = {
-	 329, 190,
-	388, 151,
-	397, 229,
-	396, 352,
-	324, 274,
-	299, 266,
-	328, 190
-	};
 	b2BodyDef body3;
 	body3.type = b2_staticBody;
 	body3.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -177,8 +121,8 @@ bool ModulePhysics::Start()
 
 	for (int i = 0; i < 7; i++)
 	{
-		points3[i].x = PIXEL_TO_METERS(Pdreta[i * 2]);
-		points3[i].y = PIXEL_TO_METERS(Pdreta[(i * 2) + 1]);
+		points3[i].x = PIXEL_TO_METERS(Pdreta1[i * 2]);
+		points3[i].y = PIXEL_TO_METERS(Pdreta1[(i * 2) + 1]);
 	}
 
 	b2ChainShape Chain3;
@@ -190,15 +134,6 @@ bool ModulePhysics::Start()
 	}//P.dreta2
 	//P.dreta2
 	{
-	int Pdreta[14] = {
-	381, 646,
-	380, 747,
-	285, 843,
-	301, 858,
-	385, 772,
-	385, 646,
-	380, 646
-	};
 	b2BodyDef body3;
 	body3.type = b2_staticBody;
 	body3.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -208,8 +143,8 @@ bool ModulePhysics::Start()
 
 	for (int i = 0; i < 7; i++)
 	{
-		points3[i].x = PIXEL_TO_METERS(Pdreta[i * 2]);
-		points3[i].y = PIXEL_TO_METERS(Pdreta[(i * 2) + 1]);
+		points3[i].x = PIXEL_TO_METERS(Pdreta2[i * 2]);
+		points3[i].y = PIXEL_TO_METERS(Pdreta2[(i * 2) + 1]);
 	}
 
 	b2ChainShape Chain3;
@@ -221,20 +156,6 @@ bool ModulePhysics::Start()
 	}
 	//Wall Ball
 	{
-	int Limit_ball[24] = {
-			470, 952,
-	470, 198,
-	462, 178,
-	456, 165,
-	451, 172,
-	438, 223,
-	437, 360,
-	414, 414,
-	391, 509,
-	414, 587,
-	414, 787,
-	254, 952
-	};
 	b2BodyDef body4;
 	body4.type = b2_staticBody;
 	body4.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -257,12 +178,6 @@ bool ModulePhysics::Start()
 	}
 	//Tesquerra
 	{
-		int Tesquerra[8] = {
-			99, 655,
-	98, 735,
-	160, 798,
-	98, 655
-		};
 		b2BodyDef body5;
 		body5.type = b2_staticBody;
 		body5.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -285,12 +200,7 @@ bool ModulePhysics::Start()
 	}
 	//Tdreta
 	{
-	int Tdreta[8] = {
-			347, 652,
-	282, 797,
-	345, 733,
-	346, 652
-	};
+	
 	b2BodyDef body6;
 	body6.type = b2_staticBody;
 	body6.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -313,13 +223,7 @@ bool ModulePhysics::Start()
 	}
 	//Qesquerra
 	{
-		int Qesquerra[10] = {
-		152, 177,
-		171, 256,
-		195, 251,
-		176, 172,
-		151, 177
-		};
+		
 		b2BodyDef body7;
 		body7.type = b2_staticBody;
 		body7.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -342,13 +246,7 @@ bool ModulePhysics::Start()
 	}
 	//QDreta
 	{
-		int Qdreta[10] = {
-		269, 171,
-		242, 247,
-		265, 256,
-		293, 180,
-		268, 171
-		};
+	
 		b2BodyDef body8;
 		body8.type = b2_staticBody;
 		body8.position.Set(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0) * 0.8f);
@@ -369,7 +267,6 @@ bool ModulePhysics::Start()
 		fixture8.density = 1.0f;
 		big_Map8->CreateFixture(&fixture8);
 	}
-	
 	//BolaObj1
 	{
 		b2BodyDef body;
@@ -966,32 +863,39 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 		{
 			App->scene_intro->B1 = true;
 			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(0, 10));
+			App->audio->PlayFx(App->scene_intro->Ping_fx);
 		}
 		
 		if (physB == App->scene_intro->circle2 && physA == App->scene_intro->Ball)
 		{
 			App->scene_intro->B2 = true;
 			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(5, -10));
+			App->audio->PlayFx(App->scene_intro->Ping_fx);
 		}
 		
 		if (physB == App->scene_intro->circle3 && physA == App->scene_intro->Ball)
 		{
 			App->scene_intro->B3 = true;
 			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(-5, -10));
+			App->audio->PlayFx(App->scene_intro->Ping_fx);
 		}
 		
 		if (physB == App->scene_intro->circle4 && physA == App->scene_intro->Ball)
 		{
 			App->scene_intro->B4 = true;
 			App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(0, 10));
+			App->audio->PlayFx(App->scene_intro->Ping_fx);
+
 		}
 
 	}
+
 
 	if ((physA == App->scene_intro->BoxBlock) && App->scene_intro->BLK == false )
 	{
 		App->scene_intro->BLK = true;
 	}
+
 
 	if(physB && physB->listener != NULL)
 		physB->listener->OnCollision(physB, physA);
