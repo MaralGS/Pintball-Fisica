@@ -81,13 +81,13 @@ update_status ModuleSceneIntro::Update()
 	
 	App->renderer->Blit(map, 0, 0, NULL);
 
-	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	/*if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		ray_on = !ray_on;
 		ray.x = App->input->GetMouseX();
 		ray.y = App->input->GetMouseY();
 	}
-
+	*/
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY())), 0);
