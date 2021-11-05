@@ -1,4 +1,4 @@
-# GetIgnore
+
 # Pintball
 This pintball is a original game maked for Pol Maresch and Alex garcia
 
