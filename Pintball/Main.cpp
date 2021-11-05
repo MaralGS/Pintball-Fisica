@@ -19,8 +19,8 @@ enum main_states
 
 double CtimeDif(clock_t t1, clock_t t2)
 {
-	double Dtick = t2 - t1;
-	double Dms = (Dtick) / (CLOCKS_PER_SEC / 1000);
+	float Dtick = t2 - t1;
+	float Dms = (Dtick / 1000);
 	return Dms;
 }
 
