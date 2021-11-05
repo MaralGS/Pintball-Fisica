@@ -36,9 +36,6 @@ bool ModuleSceneIntro::Start()
 	App->physics->RecE->listener = this;
 	Bloker = App->physics->CreateBlocker(0, 0, 40, 5, 40);
 
-	circle = App->textures->Load("pinball/wheel.png"); 
-	box = App->textures->Load("pinball/crate.png");
-	rick = App->textures->Load("pinball/rick_head.png");
 	EndScreen = App->textures->Load("pinball/End_Screen.png");
 	ball = App->textures->Load("Pinball/Poro_Coin.png");
 	FlipperE = App->textures->Load("pinball/FlipperE.png");
@@ -56,11 +53,9 @@ bool ModuleSceneIntro::Start()
 	Fonts = App->textures->Load("pinball/fonts.png");
 	
 	//sensor
-	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 	Loose = App->physics->CreateRectangleSensor(218, 1030, 80, 150,0);
-	Rebot = App->physics->CreateRectangleSensor(132, 727, 160, 6, 20);
-	Rebot2 = App->physics->CreateRectangleSensor(315, 727, 160, 6, -20);
-	//Loose = App->physics->CreateRectangleSensor(218, 780, 80, 150);
+	Rebot = App->physics->CreateRectangleSensor(132, 727, 150, 6, 20);
+	Rebot2 = App->physics->CreateRectangleSensor(315, 727, 150, 6, -20);
 	circle1 = App->physics->CreateCircleSensor(220, 87, 49);
 	circle2 = App->physics->CreateCircleSensor(152, 378, 42);
 	circle3 = App->physics->CreateCircleSensor(293, 378, 42);
@@ -85,8 +80,7 @@ update_status ModuleSceneIntro::Update()
 {
 	
 	App->renderer->Blit(map, 0, 0, NULL);
-	
-	
+
 	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
 		ray_on = !ray_on;
@@ -94,28 +88,17 @@ update_status ModuleSceneIntro::Update()
 		ray.y = App->input->GetMouseY();
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN)
-	{
-		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY())), 0);
-	}
-
 	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
-		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 14));
-	}
-	
-	
-
-	if(App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-	{
-		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50,0));
+		Ball->body->SetTransform(b2Vec2(PIXEL_TO_METERS(App->input->GetMouseX()), PIXEL_TO_METERS(App->input->GetMouseY())), 0);
 	}	
-	
+
 	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		b2Vec2 F = b2Vec2(0, -1000);
 		App->physics->RecE->body->ApplyForceToCenter(F, 1);
 	}	
+
 	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		b2Vec2 F = b2Vec2(0, -1000);
@@ -142,8 +125,7 @@ update_status ModuleSceneIntro::Update()
 		Bloker->body->SetTransform(b2Vec2(PIXEL_TO_METERS(0), PIXEL_TO_METERS(0)), 40);
 		Finish_End = false;
 		}
-		
-		
+			
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
@@ -339,6 +321,6 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 	if (bodyA == Ball && (bodyB == App->physics->RecD || bodyB == App->physics->RecE))
 	{
-		App->audio->PlayFx(App->scene_intro->Hit_fx);
+		App->audio->PlayFx(Hit_fx);
 	}
 }

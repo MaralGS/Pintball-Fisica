@@ -825,13 +825,11 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 
 	if (physA == App->scene_intro->Rebot )
 	{
-		//App->scene_intro->balls; 
 		App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(10, -10));
 	}
 	
 	if (physA == App->scene_intro->Rebot2 )
 	{
-		//App->scene_intro->balls; 
 		App->scene_intro->Ball->body->SetLinearVelocity(b2Vec2(-10,-10));
 	}
 
